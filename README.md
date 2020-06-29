@@ -15,3 +15,5 @@ Luckily, the material I have learned by myself before, and I write a summary of 
 And there are some small exercises in rustlings, as requested, I also intergate them in this repo folder `/rustlings`.
 
 It seems some error while installation, I have to run  `rustup update`.
+
+This morning, I spent about 2 hours to finish 50% of `rustlings`. 
