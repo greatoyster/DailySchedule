@@ -12,7 +12,7 @@ Today I plan do a revision on Rust programming language.
 
 Luckily, the material I have learned by myself before, and I write a summary of those books. You can refer to them [Rust Summary](https://greatoyster.github.io/2020/02/01/Rust%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E5%BD%92%E7%BA%B3/#more)
 
-And there are some small exercises in rustlings, as requested, I also intergate them in this repo folder `/rustlings`.
+And there are some small exercises in rustlings, as requested, I also intergate them in this repo folder `./rustlings`.
 
 It seems some error while installation, I have to run  `rustup update`.
 
