@@ -17,3 +17,8 @@ And there are some small exercises in rustlings, as requested, I also intergate 
 It seems some error while installation, I have to run  `rustup update`.
 
 This morning, I spent about 2 hours to finish 50% of `rustlings`. 
+
+# Day2
+Today I keep learning Rust, and I found I am weak at part of error handling, I will spend more time one that.
+
+As planed, the updated codes are contained in `rustling-exercise` folder.
