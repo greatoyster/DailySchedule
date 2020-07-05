@@ -22,3 +22,9 @@ This morning, I spent about 2 hours to finish 50% of `rustlings`.
 Today I keep learning Rust, and I found I am weak at part of error handling, I will spend more time one that.
 
 As planed, the updated codes are contained in `rustling-exercise` folder.
+
+# Day3
+
+Today I updated my notes about error handling and trait, you can found it it previous link.
+
+In fact, the polymorphism of Rust is somehow a little different from that of  
