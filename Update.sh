@@ -1,1 +1,1 @@
-cp rustlings/exercises rustling_exercises -r
+cp  rustlings/exercises rustling_exercises 
