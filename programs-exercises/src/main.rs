@@ -1,4 +1,5 @@
 fn main() {
+    let i:tree::Node;
     println!("Hello World!");
 }
 
