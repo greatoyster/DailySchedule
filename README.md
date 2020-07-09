@@ -63,11 +63,15 @@ Today I tried to do  a summary to smart pointer in Rust.
 
 2. `Rc` 
 
-   It means reference counting, mainly to handle issues about shared ownership. There exist another similar design `Weak`, which does not have ownership but only borrow. Note that in condition of multi thread, you should consider `Arc` to guarantee the atomicity of operation.
+   It means reference counting, mainly to handle issues about shared ownership. There exist another similar design `Weak`(usually to solve recursive reference, which does increase reference counting), which does not have ownership but only borrow. Note that in condition of multi thread, you should consider `Arc` to guarantee the atomicity of operation.
 
 3. `RefCell`
 
    For an object instead of simple variable, we can use `Cell<T>` and `RefCell<T>` to realized the mutability of inner member. Note that the wrapped type in `Cell` must implement `Copy` trait, it has two method `set()` and `get()`. As to `RefCell`, it is more general, which also have two equivalent methods `borrow_mut()` and `borrow()` .
 
 The rest of today, I planed to learn more about OS and finish part of rCore lab.
+
+I read the graduation design of Runji Wang and learnt the starting point of `rCore`, it is so excited.
+
+
 
