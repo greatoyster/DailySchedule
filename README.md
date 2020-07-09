@@ -17,9 +17,9 @@ The first task is to learn Rust programming language. I plan to finished the fir
 
 Today I planed do a revision on Rust programming language.
 
-Luckily, the material I have learned by myself before, and I write a summary of those books. You can refer to them [Rust Summary](https://greatoyster.github.io/2020/02/01/Rust%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E5%BD%92%E7%BA%B3/#more)
+Luckily, the material I have learned by myself before, and I wrote a summary of those books. You can refer to them [Rust Summary](https://greatoyster.github.io/2020/02/01/Rust%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E5%BD%92%E7%BA%B3/#more)
 
-And there are some small exercises in rustlings, as requested, I also intergate them in this repo folder `./rustlings`.
+And there are some small exercises in rustlings, as requested, I also integrated them in this repo folder `./rustlings`.
 
 It seems some error while installation, I have to run  `rustup update`.
 
@@ -44,8 +44,30 @@ Toady I finished all of rustlings, after this comprehensive practice, I have bet
 What I need to do next is to get familiar with coming rCore-Tutorial, especially the OS related part. 
 
 # Day5
-Today I would like to experience grpc-rs. I spent the whole morning and afternoon to implemented the main functionalities of our previous class project --- RPC-based distributed file system.
 
-I first defined the interface of using protobuf, then I generated the basic framework of the client and server. Step by step, it is smoother than our previous implementation in C language. Compared with C, Rust has less crashes in run time. In addition, the speed of developing is not so slow for the familiarity of  Rust. The new feature is that the Rust version server now support multi threads, I implemented a thread pool for the server.
+Today I would like to experience `grpc-rs`. I spent the whole morning and afternoon to implemented the main functionalities of our previous class project --- RPC-based distributed file system.
+
+I first defined the interface of using `protobuf`, then I generated the basic framework of the client and server. Step by step, it is smoother than our previous implementation in C language. Compared with C, Rust has less crashes in run time. In addition, the speed of developing is not so slow for the familiarity of  Rust. The new feature is that the Rust version server now support multi threads, I implemented a thread pool for the server.
 
 In the rest of today, I learned some OS lectures,
+
+# Day6
+
+Yesterday I shown my Rust implementation of that distributed file system to my collaborator Chibin Zhang. He provided me with some useful suggestions after reviewing the code. After all it was seen as a toy example, I may update it in the future(有生之年).
+
+Today I tried to do  a summary to smart pointer in Rust.
+
+1. `Box<T>`
+
+   It can allocate memory in heap for the data. In detailed implementation is use an keyword called `box`, which invokes `exchange_malloc()` and `box_free()` to complete the task of memory management.
+
+2. `Rc` 
+
+   It means reference counting, mainly to handle issues about shared ownership. There exist another similar design `Weak`, which does not have ownership but only borrow. Note that in condition of multi thread, you should consider `Arc` to guarantee the atomicity of operation.
+
+3. `RefCell`
+
+   For an object instead of simple variable, we can use `Cell<T>` and `RefCell<T>` to realized the mutability of inner member. Note that the wrapped type in `Cell` must implement `Copy` trait, it has two method `set()` and `get()`. As to `RefCell`, it is more general, which also have two equivalent methods `borrow_mut()` and `borrow()` .
+
+The rest of today, I planed to learn more about OS and finish part of rCore lab.
+
