@@ -73,5 +73,7 @@ The rest of today, I planed to learn more about OS and finish part of rCore lab.
 
 I read the graduation design of Runji Wang and learnt the starting point of `rCore`, it is so excited.
 
+# Day7
 
+Today I decided to have a rest and stop here for a while for I have TOFEL courses (they are expensive and meaningless.) . And I planed to update a note about RISC-V privileged architecture within coming three days.
 
