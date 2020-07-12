@@ -34,9 +34,13 @@
 # Lec03
 
 1. System call: request from application to OS to get OS services.
+
 2. Exception: request caused by illegal instruction or failed instruction
+
 3. Hardware interrupt: request from external devices.
+
 4. Four privilege level: U S H M
+
 5. OS kernel is trusted third party, and it can execute privileged instruction and manage the hardware. In general, it provides us with various of service.
 
 6. Source of interrupt: devices
@@ -54,5 +58,17 @@
 12. Three standard interrupt sources: software, timer, external devices
 
 13. `sstatus` & `sie` are CSR (control status registers)
+
+14. To implement interrupt,  we need to make CPU response to it, create interrupt handler, process the interrupt. What's more, we need to save and recover the  current status
+
+# Lec04
+
+1. Memory management: abstraction, protection, sharing, virtualization.
+
+2. How to manage memory: re-localization, segmentation, paging, virtual memory.
+
+3. Highly coupled to hardware(MMU).
+
+4. 
 
     
