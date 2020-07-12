@@ -63,11 +63,29 @@ Today I tried to do  a summary to smart pointer in Rust.
 
 2. `Rc` 
 
-   It means reference counting, mainly to handle issues about shared ownership. There exist another similar design `Weak`, which does not have ownership but only borrow. Note that in condition of multi thread, you should consider `Arc` to guarantee the atomicity of operation.
+   It means reference counting, mainly to handle issues about shared ownership. There exist another similar design `Weak`(usually to solve recursive reference, which does increase reference counting), which does not have ownership but only borrow. Note that in condition of multi thread, you should consider `Arc` to guarantee the atomicity of operation.
 
-3. `RefCell`
+3. `RefCell<T>`
 
    For an object instead of simple variable, we can use `Cell<T>` and `RefCell<T>` to realized the mutability of inner member. Note that the wrapped type in `Cell` must implement `Copy` trait, it has two method `set()` and `get()`. As to `RefCell`, it is more general, which also have two equivalent methods `borrow_mut()` and `borrow()` .
 
 The rest of today, I planed to learn more about OS and finish part of rCore lab.
+
+I read the graduation design of Runji Wang and learnt the starting point of `rCore`, it is so excited.
+
+# Day7
+
+Today I decided to have a rest and stop here for a while for I have TOFEL courses (they are expensive and meaningless.) . And I planed to update a note about RISC-V privileged architecture within coming three days.
+
+# Day8
+
+Today I went through the daily schedule of others. I found their rate of  process is ahead than mine. I have to work harder and harder to catch up with them.
+
+# Day9
+
+Today I almost finished lab0, lab1 and lab2. In fact, it is not so hard. 
+
+And I also post a GitHub issue, which indicated `asm!` had been deprecated.
+
+But it does not matter, we can just use `llvm_asm!` instead.
 
