@@ -12,4 +12,4 @@ edition = "2018"
 
 
 [dependencies]
-#riscv = { git = "https://github.com/rcore-os/riscv", features = ["inline-asm"] }
+riscv = { git = "https://github.com/rcore-os/riscv", features = ["inline-asm"] }

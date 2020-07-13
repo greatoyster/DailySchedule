@@ -101,4 +101,39 @@ And my yesterday's GitHub issue is about rCore-handbook, the rCore-tutorial is j
 
 A lot of changes exist between those versions of tutorial.
 
-In source code assembly, `SAVE` and `LOAD` are two useful macros. 
+In source code assembly, `SAVE` and `LOAD` are two useful macros, their definitions begin with `.macro` and end with `.endm`. Here is an exampe:
+
+
+```assembly
+.macro LOAD reg, offset
+  ld  \reg, \offset*8(sp)
+.endm
+```
+
+Note that `sp` mean stack pointer register, it can be also written as `x2`
+
+CSR about interrupt:
+
+- `sepc`: exception program counter
+
+- `scause`: whther hardware interrupt and its cause.
+
+- `stval`: supervisor trap value register.
+
+- `stvec`, `sstatus`, `sie`, `sip`, `scratch`
+
+Related instructions:
+
+- `ecall`: firmware relative call
+
+- `sret`: kernel -> user
+
+- `mret`: machine-level -> kernel-level
+
+- `ebreak`: break at breakpoint
+
+In rCore-Tutorial, those registers are binding with related struct, i.e. `Context`, we can refer to this easily.
+
+And I use keyword `extern` frequently in os related work, so I need to clarify its exact meanings, 
+you can find it in this link [extern](https://doc.rust-lang.org/std/keyword.extern.html)
+
