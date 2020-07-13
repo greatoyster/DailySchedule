@@ -83,9 +83,22 @@ Today I went through the daily schedule of others. I found their rate of  proces
 
 # Day9
 
-Today I almost finished lab0, lab1 and lab2. In fact, it is not so hard. 
+Today I almost finished lab0, lab1. In fact, it is not so hard. 
 
 And I also post a GitHub issue, which indicated `asm!` had been deprecated.
 
 But it does not matter, we can just use `llvm_asm!` instead.
 
+# Day10
+
+Today I learned more about RISC-V  assembly and its in-line form in Rust.  
+
+[riscv-asm-manual](https://github.com/riscv/riscv-asm-manual/blob/master/riscv-asm.md)
+
+And I tried first lab step by step.
+
+And my yesterday's GitHub issue is about rCore-handbook, the rCore-tutorial is just up-to-data. That's fine.
+
+A lot of changes exist between those versions of tutorial.
+
+In source code assembly, `SAVE` and `LOAD` are two useful macros. 

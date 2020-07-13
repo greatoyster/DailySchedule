@@ -1,16 +1,21 @@
-<<<<<<< HEAD
 #![no_std]
 #![no_main]
-#![allow(unused_imports)]
-use os;
-=======
-#![no_std]
-use core::panic::PanicInfo;
-#[panic_handler]
-fn panic(_info:&PanicInfo)->!{
-loop{}
+#![feature(llvm_asm)]
+#![feature(global_asm)]
+#![feature(panic_info_message)]
+#[macro_use]
+mod console;
+mod panic;
+mod sbi;
+
+
+global_asm!(include_str!("entry.asm"));
+
+#[no_mangle]
+pub extern "C" fn rust_main() -> ! {
+    println!("Hello rCore-Tutorial!");
+    unsafe {
+        llvm_asm!("ebreak"::::"volatile");
+    };
+    panic!("end of rust_main")
 }
-fn main() {
-    // println!("Hello, world!");
-}
->>>>>>> c9430f7a64a11bbb6250342dd8f7a1452675fd6a

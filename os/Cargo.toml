@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [package]
 name = "os"
 version = "0.1.0"
@@ -11,19 +10,6 @@ edition = "2018"
 
 [profile.release]
 
-[dependencies]
-=======
-[package]
-name = "os"
-version = "0.1.0"
-authors = ["greatoyster <yangjq@shanghaitech.edu.cn>"]
-edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-[profile.dev]
-panic = "abort"
-
-[profile.release]
-panic = "abort"
 [dependencies]
->>>>>>> c9430f7a64a11bbb6250342dd8f7a1452675fd6a
+#riscv = { git = "https://github.com/rcore-os/riscv", features = ["inline-asm"] }

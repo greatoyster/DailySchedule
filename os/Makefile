@@ -1,36 +1,41 @@
+TARGET      := riscv64imac-unknown-none-elf
+MODE        := debug
+KERNEL_FILE := target/$(TARGET)/$(MODE)/os
+BIN_FILE    := target/$(TARGET)/$(MODE)/kernel.bin
 
-target := riscv64imac-unknown-none-elf
-mode := debug
-kernel := target/$(target)/$(mode)/os
-bin := target/$(target)/$(mode)/kernel.bin
+OBJDUMP     := rust-objdump --arch-name=riscv64
+OBJCOPY     := rust-objcopy --binary-architecture=riscv64
 
-objdump := rust-objdump --arch-name=riscv64
-objcopy := rust-objcopy --binary-architecture=riscv64
-.PHONY: kernel build clean qemu run env
+.PHONY: doc kernel build clean qemu run
 
-env:
-	cargo install cargo-binutils
-	rustup component add llvm-tools-preview rustfmt
-	rustup target add $(target)
 
+build: $(BIN_FILE) 
+
+doc:
+	@cargo doc --document-private-items
+
+# 编译 kernel
 kernel:
-	cargo build
+	@cargo build
 
-$(bin): kernel
-	rust-objcopy target/riscv64imac-unknown-none-elf/debug/os \
-	--strip-all -O binary \
-	target/riscv64imac-unknown-none-elf/debug/kernel.bin
+
+$(BIN_FILE): kernel
+	@$(OBJCOPY) $(KERNEL_FILE) --strip-all -O binary $@
+
+
 asm:
-	$(objdump) -d $(kernel) | less
+	@$(OBJDUMP) -d $(KERNEL_FILE) | less
 
-build: $(bin)
-	
+
 clean:
-	cargo clean
-qemu:
-	qemu-system-riscv64 \
-  -machine virt \
-	-nographic \
-	-bios default \
-	-device loader,file=$(bin),addr=0x80200000
+	@cargo clean
+
+
+qemu: build
+	@qemu-system-riscv64 \
+            -machine virt \
+            -nographic \
+            -bios default \
+            -device loader,file=$(BIN_FILE),addr=0x80200000
+
 run: build qemu
