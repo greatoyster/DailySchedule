@@ -13,15 +13,15 @@
 
 
 __interrupt:
-    # 在栈上开辟 Context 所需的空间
+
     addi    sp, sp, -34*8
 
-    # 保存通用寄存器，除了 x0（固定为 0）
+
     SAVE    x1, 1
-    # 将原来的 sp（sp 又名 x2）写入 2 位置
+
     addi    x1, sp, 34*8
     SAVE    x1, 2
-    # 其他通用寄存器
+
     SAVE    x3, 3
     SAVE    x4, 4
     SAVE    x5, 5
