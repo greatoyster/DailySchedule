@@ -137,3 +137,26 @@ In rCore-Tutorial, those registers are binding with related struct, i.e. `Contex
 And I use keyword `extern` frequently in os related work, so I need to clarify its exact meanings, 
 you can find it in this link [extern](https://doc.rust-lang.org/std/keyword.extern.html)
 
+# Day11-Day15
+
+These days I have a lot of things to do so the process is much slower than before. And I also consult about the policy to enter Shen Zhen, but the teacher of administration told me that it may be troublesome for safety concerns. So Maybe I have to work online in later section.
+
+# Day16
+
+Today we have meeting about this activities, the teacher made an introduction to PengChengLab, it is wonderful. And most of questions about labs have been published. I started to write report for that.
+
+# Day17
+
+I finished report for lab 1.
+
+# Day18
+
+I finished most of lab 2. Report is on the way. 
+
+# Day19
+
+I finished most of lab 3. Report is on the way.
+
+# Day20
+
+I fixed the previous network problem of my desktop, and today I planed to finish lab 4. 
