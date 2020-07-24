@@ -1,8 +1,8 @@
 # Lab2 代码分析
 
-`File Orgnization`
+`File Organization`
 
-Compared with previous lab 1, lab 2 add two individual module `memory` and `algorithm`.
+Compared with previous lab 1, lab 2 add two individual modules `memory` and `algorithm`.
 
 ```shell
 src
@@ -48,10 +48,90 @@ src
    - `range.rs`: it provides us with a convinient interface of iterator in those type related to address.
    - `frame/allocator.rs`: this part is about allocator
 2. `algorithm`: its submodule `allocator` provides us with a bit map allocater and stacked allocater. 
+   - `stacked_allocator.rs`: the stacked allocator is used for the allocation of physical pages. It use tuples to represent available spaces. so new with `(0,capacity)`, when allocating spaces, it pops the last tuple to see whether there is free space, if so, it will push a new tuple to update.
 
 `Practice`
 
 - Q1: we store those uninitialized global variables in bss segment, its full name is block started by symbol. The heap is accually uninitailzed data and it is seen as a global varible in our os implementation.
+
 - Q2: it is somehow like a chicken-egg problem, such code will not work.
-- Q3.1: space O(n), time O(1)
-- Q3.2: implementing...
+
+- Q3.1: space O(n), time O(1).
+
+- Q3.2: implementing, you can see the code
+
+  ```rust
+  //! Segment tree allocator
+  use super::Allocator;
+  use alloc::{vec, vec::Vec};
+  
+  struct SegmentTree {
+      left: usize,
+      right: usize,
+  }
+  
+  pub struct SegmentTreeAllocator {
+      capacity: usize,
+      tree: Vec<SegmentTree>,
+      data: Vec<usize>,
+  }
+  
+  impl SegmentTreeAllocator {
+      pub fn init(cap: usize) -> Self {
+          let mut sta = SegmentTreeAllocator {
+              capacity: cap,
+              tree: Vec::<SegmentTree>::new(),
+              data: Vec::<usize>::new(),
+          };
+          for _ in 0..cap * 4 + 5 as usize {
+              sta.tree.push(SegmentTree { left: 0, right: 0 });
+          }
+          sta.data.push(0);
+          for _ in 0..cap as usize {
+              sta.data.push(0);
+          }
+          sta
+      }
+      pub fn build(&mut self, rt: usize, l: usize, r: usize) {
+          self.tree[rt].left = l;
+          self.tree[rt].right = r;
+          if l == r {
+              // update
+              return;
+          }
+          let mid = (l + r) / 2;
+          self.build(rt * 2, l, mid);
+          self.build(rt * 2 + 1, mid + 1, r);
+          // update
+      }
+  }
+  
+  
+  impl Allocator for SegmentTreeAllocator {
+      fn new(capacity: usize) -> Self {
+          SegmentTreeAllocator::init(capacity)
+      }
+      fn alloc(&mut self) -> Option<usize> {
+          let mut alloc_success = false;
+          let mut start = 0;
+          for i in 1..self.capacity + 1 as usize {
+              if self.data[i] == 0 {
+                  alloc_success = true;
+                  start = i - 1;
+                  self.data[i] = 1;
+                  break;
+              }
+          }
+          if alloc_success {
+              Some(start)
+          } else { None }
+      }
+  
+      fn dealloc(&mut self, index: usize) {
+          self.data[index + 1] = 0;
+      }
+  }
+  
+  ```
+
+  And I have a question here, how to use segment tree to allocator memory efficiently? I think my inplementation is somehow not so fast which is `O(n)`. Anyway, it works.

@@ -1,0 +1,8 @@
+# Lab3代码分析
+
+`File Organization`
+
+The file organization is same as lab 2, the several different things is the `config.rs`, in which the mapping offset `0xffff_ffff_0000_0000` is added, related operations about kernel mapping is implemented in `entry.asm` .
+
+By the way, in our linker script, we do a alignment there.
+

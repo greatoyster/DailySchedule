@@ -1,1 +1,0 @@
-/home/yangjq/Desktop/DailySchedule/os/target/riscv64imac-unknown-none-elf/debug/libos.rlib: /home/yangjq/Desktop/DailySchedule/os/src/lang_items.rs /home/yangjq/Desktop/DailySchedule/os/src/lib.rs /home/yangjq/Desktop/DailySchedule/os/src/sbi.rs
