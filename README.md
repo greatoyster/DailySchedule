@@ -83,7 +83,7 @@ Today I went through the daily schedule of others. I found their rate of  proces
 
 # Day9
 
-Today I almost finished lab0, lab1. In fact, it is not so hard. 
+Today I almost finished lab 0, lab 1. In fact, it is not so hard. 
 
 And I also post a GitHub issue, which indicated `asm!` had been deprecated.
 
@@ -101,7 +101,7 @@ And my yesterday's GitHub issue is about rCore-handbook, the rCore-tutorial is j
 
 A lot of changes exist between those versions of tutorial.
 
-In source code assembly, `SAVE` and `LOAD` are two useful macros, their definitions begin with `.macro` and end with `.endm`. Here is an exampe:
+In source code assembly, `SAVE` and `LOAD` are two useful macros, their definitions begin with `.macro` and end with `.endm`. Here is an example:
 
 
 ```assembly
@@ -132,7 +132,7 @@ Related instructions:
 
 - `ebreak`: break at breakpoint
 
-In rCore-Tutorial, those registers are binding with related struct, i.e. `Context`, we can refer to this easily.
+In rCore-Tutorial, those registers are binding with related structure, i.e. `Context`, we can refer to this easily.
 
 And I use keyword `extern` frequently in os related work, so I need to clarify its exact meanings, 
 you can find it in this link [extern](https://doc.rust-lang.org/std/keyword.extern.html)
@@ -160,3 +160,8 @@ I finished most of lab 3. Report is on the way.
 # Day20
 
 I fixed the previous network problem of my desktop, and today I planed to finish lab 4. 
+
+# Day21
+
+I finished the report of lab 2 and lab 3. related material can be found in this repo.
+
