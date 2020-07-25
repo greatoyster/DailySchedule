@@ -1,6 +1,6 @@
  
 
-# DailySchedule
+# Daily Schedule
 
 Daily schedule of OS Tutorial Summer of Code 2020
 
@@ -164,4 +164,10 @@ I fixed the previous network problem of my desktop, and today I planed to finish
 # Day21
 
 I finished the report of lab 2 and lab 3. related material can be found in this repo.
+
+# Day22
+
+Today I went through the frame work for lab4 - lab6, and I found a better implementation of segment tree allocator.
+
+ 
 
