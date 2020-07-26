@@ -82,11 +82,104 @@ The main file related to lab 4:
 `Lab 4 Practice`
 
 1. Q1: which switch threads the processor will invoke `prepare_next_thread()` method to push context to user stack, related page table will be prepared at that time. The change in page table does not matter, as part of context, it is saved.
+
 2. Q2: this part I referred to the official answer, but I still have questions about the last case.
-3. Q3&Q4 is implementing…
+
+3. Q3: to kill a thread we just need to do two steps, just add these two lines to the interrupt handler while receiving `ctrl+c`
+
+   ```rust
+   processor.kill_current_thread();
+   processor.prepare_next_thread();
+   ```
+
+   ```rust
+   fn supervisor_external(context: &mut Context) -> *mut Context {
+       let mut c = console_getchar();
+       println!("{}", c);
+       if c <= 255 {
+           if c == '\r' as usize {
+               c = '\n' as usize;
+           }
+           STDIN.push(c as u8);
+           if c == 3 {
+              PROCESSOR.lock().kill_current_thread();
+              PROCESSOR.lock().prepare_next_thread();
+           }
+       }
+       context
+   }
+   ```
+
+4. Q4, this part is a little bit confusing. just as the interface, you need to impl `processor.rs`
+
+   ```rust
+    pub fn fork_current_thread(&mut self, context: &Context) {
+           let thread = self.current_thread().fork(context).unwrap();
+           self.scheduler.add_thread(thread)
+    }
+   ```
+
+   Then you need to implement `fork` in `threads`, just like its `new()`
+
+   ```rust
+   pub fn fork(&self, current_context: &Context) -> MemoryResult<Arc<Thread>> {
+           println!("~~~FORK U~~~");
+           let process = self.process.clone();
+           let stack = process.alloc_page_range(STACK_SIZE, Flags::READABLE | Flags::WRITABLE)?;
+           for i in 0..STACK_SIZE {
+               *VirtualAddress(stack.start.0 + i).deref::<u8>() = *VirtualAddress(self.stack.start.0 + i).deref::<u8>()
+           }
+           let mut context = current_context.clone();
+           context.set_sp(usize::from(stack.start) - usize::from(self.stack.start) + current_context.sp());
+           let thread = Arc::new(Thread {
+               id: unsafe {
+                   THREAD_COUNTER += 1;
+                   THREAD_COUNTER
+               },
+               stack,
+               process,
+               inner: Mutex::new(ThreadInner {
+                   context: Some(context),
+                   sleeping: false,
+                   dead: false,
+               }),
+           });
+           Ok(thread)
+       }
+   ```
+
+   But I still confused about previous discussion about the semantics of `fork` and  `clone`
+
+   
 
 `Lab 6 pratice`
 
 1. Q1: in aspect of thread, it is blocked, but in aspect of OS, it is not so, because OS can do others thing while waiting.
 
 2. Q2: if you want to use `Vec`, you need to allocate free memory in runtime, then the heap must be involved, and to use more space than user stack, maybe you need to use virtual memory.  
+
+3. Q3&Q4: to implement system `get_tid`(), take it easy, first you had better need to add these constant 
+
+   ```rust
+   pub const SYS_GET_TID: usize = 94;
+   pub const SYS_CLONE: usize = 95;
+   ```
+
+   Then add an arm metion above in `os/syscall.rs`
+
+   ```
+   let result = match syscall_id {
+           SYS_READ => sys_read(args[0], args[1] as *mut u8, args[2]),
+           SYS_WRITE => sys_write(args[0], args[1] as *mut u8, args[2]),
+           SYS_EXIT => sys_exit(args[0]),
+           SYS_GET_TID => sys_get_tid(),
+           SYS_CLONE => sys_clone(context),
+           _ => {
+               println!("unimplemented syscall: {}", syscall_id);
+               SyscallResult::Kill
+           }
+       };
+   ```
+
+   
+
