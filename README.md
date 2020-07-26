@@ -6,6 +6,8 @@ Daily schedule of OS Tutorial Summer of Code 2020
 
 Here is the links of [rCore-Tutorial-issues](https://github.com/rcore-os/rCore-Tutorial/issues/)
 
+注：所有相关的记录都已经整合在该repo当中
+
 # Day0
 
 Today I applied for this project and admitted later. The tutor told me that I'd better take it step by step. To record my daily schedule, I create this repo.
@@ -169,5 +171,7 @@ I finished the report of lab 2 and lab 3. related material can be found in this 
 
 Today I went through the frame work for lab4 - lab6, and I found a better implementation of segment tree allocator.
 
- 
+# Day23
+
+不知不觉已经Day23了，到了验收的日子，姑且做个总结，目前进度还不是很快，LAB1-LAB6的所有代码已经详细阅读，并且做了相关的描述，可以在实验报告中看到，涉及原理的实验题已经完成，有一些需要`coding`的部分预期接下来几天可以完成，进度基本符合原计划，八月份之前可以完成所有的练习了。Rust部分的15道编程题小练习略过了（做了五道以后发现用Rust来写LCTHW其实没什么特别大的效果，Rustlings已经够用了，自己以前也比较熟悉Rust，Leetcode以前也写过挺多题目，所以就不在上面花时间了。）唯一比较遗憾的是还没提过pr，最多只是在issue里做做问答。关于RISCV的特权级指令目前用到的就那么几个，基本也都了解了。
 
