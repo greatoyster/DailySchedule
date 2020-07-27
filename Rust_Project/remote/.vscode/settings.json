@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "operation.h": "c",
+        "getdir.h": "c",
+        "filecount.h": "c",
+        "ls.h": "c"
+    }
+}

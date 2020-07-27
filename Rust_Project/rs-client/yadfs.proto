@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+message HelloRequest { string name = 1; }
+message HelloResponse { string name = 1; }
+
+message GetDirRequest { string file_path = 1; }
+message GetDirResponse { string current_dir = 1; }
+
+message ChangeDirRequest { string dir_path = 1; }
+message ChangeDirResponse { int32 is_success = 1; }
+
+message FileCountRequest {}
+message FileCountResponse { int32 file_count = 1; }
+
+message ListRequest {}
+message ListResponse { string list_dir = 1; }
+
+message OpenFiletoReadRequest { string file_path = 1; }
+message OpenFiletoReadResponse { int32 is_success = 1; }
+message NextReadRequest { string file_name = 1; }
+message NextReadResponse {
+  string file_name = 1;
+  string block = 2;
+  int32 is_end = 3;
+}
+
+message CloseFileRequest { string file_path = 1; }
+message CloseFileResponse { int32 is_success = 1; }
+
+message OpenFiletoWriteRequest { string file_path = 1; }
+message OpenFiletoWriteResopnse { int32 is_success = 1; }
+message NextWriteRequest {
+  string file_name = 1;
+  string block = 2;
+  int32 is_end = 3;
+}
+message NextWriteResponse {}
+
+service YadfsService {
+  rpc Hello(HelloRequest) returns (HelloResponse);
+  rpc Getdir(GetDirRequest) returns (GetDirResponse);
+  rpc ChangeDir(ChangeDirRequest) returns (ChangeDirResponse);
+  rpc FileCount(FileCountRequest) returns (FileCountResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc OpenFileToRead(OpenFiletoReadRequest) returns (OpenFiletoReadResponse);
+  rpc NextRead(NextReadRequest) returns (NextReadResponse);
+  rpc CloseFile(CloseFileRequest) returns (CloseFileResponse);
+  rpc OpenFileToWrite(OpenFiletoWriteRequest) returns (OpenFiletoWriteResopnse);
+  rpc NextWrite(NextWriteRequest) returns (NextWriteResponse);
+}

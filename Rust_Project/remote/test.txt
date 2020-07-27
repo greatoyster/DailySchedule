@@ -1,0 +1,54 @@
+getdir
+filecount
+filecount size>100
+filecount type=d
+filecount age<1d
+ls
+ls .
+ls ..
+ls -l .
+ls -l ..
+ls -l size<10000
+ls -l type=r
+ls -l age>2h
+cd ..
+getdir
+filecount
+filecount size>100
+filecount type=d
+filecount age<1d
+ls
+ls .
+ls ..
+ls -l .
+ls -l ..
+ls -l size<10000
+ls -l type=r
+ls -l age>2h
+cd -
+getdir
+filecount
+filecount size>100
+filecount type=d
+filecount age<1d
+ls
+ls .
+ls ..
+ls -l .
+ls -l ..
+ls -l size<20000
+ls -l type=r
+cd ..
+getdir
+filecount
+filecount size>100
+filecount type=d
+filecount age<1d
+ls
+ls .
+ls ..
+ls -l .
+ls -l ..
+ls -l size<100000
+ls -l type=d
+ls -l age<1m

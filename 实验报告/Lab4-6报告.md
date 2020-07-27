@@ -158,31 +158,4 @@ The main file related to lab 4:
 
 2. Q2: if you want to use `Vec`, you need to allocate free memory in runtime, then the heap must be involved, and to use more space than user stack, maybe you need to use virtual memory.  
 
-3. Q3&Q4: to implement system `get_tid`(), take it easy, first you had better need to add these constant 
-
-   ```rust
-   pub const SYS_GET_TID: usize = 94;
-   pub const SYS_CLONE: usize = 95;
-   ```
-
-   Then add an arm metion above in `os/syscall.rs`
-
-   ```
-   let result = match syscall_id {
-           SYS_READ => sys_read(args[0], args[1] as *mut u8, args[2]),
-           SYS_WRITE => sys_write(args[0], args[1] as *mut u8, args[2]),
-           SYS_EXIT => sys_exit(args[0]),
-           SYS_GET_TID => sys_get_tid(),
-           SYS_CLONE => sys_clone(context),
-           _ => {
-               println!("unimplemented syscall: {}", syscall_id);
-               SyscallResult::Kill
-           }
-       };
-   ```
-
-   
-
-4. Q5 
-
-   
+3. Q3&4&5: I have implemented them,  you can find in `Lab` folder. Their code is distributed in different files, so I will extract them to a independent folder.
