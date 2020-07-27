@@ -8,6 +8,8 @@ Here is the links of [rCore-Tutorial-issues](https://github.com/rcore-os/rCore-T
 
 注：所有相关的记录都已经整合在该repo当中
 
+注：快速预览建议先看[总结](./总结.md)
+
 # Day0
 
 Today I applied for this project and admitted later. The tutor told me that I'd better take it step by step. To record my daily schedule, I create this repo.
@@ -118,7 +120,7 @@ CSR about interrupt:
 
 - `sepc`: exception program counter
 
-- `scause`: whther hardware interrupt and its cause.
+- `scause`: whether hardware interrupt and its cause.
 
 - `stval`: supervisor trap value register.
 
@@ -136,7 +138,7 @@ Related instructions:
 
 In rCore-Tutorial, those registers are binding with related structure, i.e. `Context`, we can refer to this easily.
 
-And I use keyword `extern` frequently in os related work, so I need to clarify its exact meanings, 
+And I use keyword `extern` frequently in OS related work, so I need to clarify its exact meanings, 
 you can find it in this link [extern](https://doc.rust-lang.org/std/keyword.extern.html)
 
 # Day11-Day15
